@@ -97,7 +97,7 @@ ASI求解器中的气体计算域（无多孔介质）可以设置平均流速`u
 
 外部文件名称。
 
-> `import`: VariableObject
+> `import`: [VariableObject](others.md#variableobject)
 
 域内包含的材料的编号。
 
