@@ -1,4 +1,4 @@
-# 域及边界条件
+# 边界条件
 
 ### BoundaryConditionObject <a id="bco"></a>
 

@@ -8,14 +8,14 @@ description: 待读入网格的相关信息。
 需要补充、修正、完善。
 {% endhint %}
 
-### GridInfoObject <a id="gio"></a>
+### GridObject <a id="gio"></a>
 
 ```javascript
 {
   "fileName": "网格文件名.网格文件名后缀",
-  "type": "网格文件类型",
-  "cgnsLibrary": "cgns网格lib版本"
-  "zones": []
+  "fileType": "网格文件类型",
+  "cgnsLibrary": "cgns网格lib版本",
+  "zone": {}
 }
 ```
 
@@ -23,7 +23,7 @@ description: 待读入网格的相关信息。
 
 GTEA需要读入的网格文件名称，其值是在程序运行路径 `stdout`下的一个带后缀名的网格文件名，如`"case.msh"`。
 
-> `type`: "msh" \| "layring msh" \| "pgrid" \| "cgns"
+> `fileType`: "msh" \| "layring msh" \| "pgrid" \| "cgns"
 
 网格文件类型，若不指定则默认文件类型为`"msh"`。
 
@@ -31,22 +31,22 @@ GTEA需要读入的网格文件名称，其值是在程序运行路径 `stdout`�
 
 若指定网格文件类型为`"cgns"`。则需要增加指定cgns library的版本号。
 
-> `zones`: \[[GridZonesObject](gridinfo.md#gso)\]
+`zones`: [GridZoneMaps](grid.md#agio)
 
-每个网格文件含有的区域信息**数组**，详见[网格区域信息](gridinfo.md#gso)。
+每个网格文件含有的区域信息**映射**，详见[网格区域信息](grid.md#gso)。
 
 
 
-#### GridZonesObject <a id="gso"></a>
+#### GridZoneMaps <a id="gso"></a>
 
 {% hint style="info" %}
 与求解模块列表中的区域设置对应，与边界条件以及附加边界条件中的interior物性设置对应。
 {% endhint %}
 
 ```javascript
-{
+"id": {
     "name": "区域名称",
-    "type": "区域问题类型"
+    "type": "区域问题类型",
     "id": "区域编号"
 }
 ```
@@ -65,13 +65,13 @@ GTEA需要读入的网格文件名称，其值是在程序运行路径 `stdout`�
 * `"aeroacoustics"`: 气动声学域。
 * `"multi-phase flow"`: 多相流体域。
 
-> `id`: number
+> `id`: string
 
 某个域zone的id，与网格各个区域名称对应。
 
 ##  <a id="additionalgridinfo"></a>
 
-### AdditionalGridInfoObject <a id="agio"></a>
+### GridControlObject <a id="agio"></a>
 
 ```javascript
 {
